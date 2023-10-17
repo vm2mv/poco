@@ -861,7 +861,12 @@ void Context::initDH(bool use2048Bits, const std::string& dhParamsFile)
 	SSL_CTX_set0_tmp_dh_pkey(_pSSLContext, pKey);
 	SSL_CTX_set_options(_pSSLContext, SSL_OP_SINGLE_DH_USE);
 
-	if (freeEVPPKey) EVP_PKEY_free(pKey);
+	/*
+	https://www.openssl.org/docs/man3.1/man3/SSL_CTX_set0_tmp_dh_pkey.html
+	Ownership of the dhpkey value is passed to the SSL_CTX or SSL object as a result of this call,
+	and so the caller should not free it if the function call is successful.
+	*/
+	//if (freeEVPPKey) EVP_PKEY_free(pKey);
 
 #else // OPENSSL_VERSION_NUMBER >= 0x30000000L
 
