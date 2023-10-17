@@ -84,7 +84,7 @@ void Debugger::enter()
 	#if defined(POCO_OS_FAMILY_WINDOWS)
 	if (isAvailable())
 	{
-		DebugBreak();
+		//DebugBreak();
 	}
 	#elif defined(POCO_VXWORKS)
 	{
@@ -93,7 +93,7 @@ void Debugger::enter()
 	#elif defined(POCO_OS_FAMILY_UNIX)
 	if (isAvailable())
 	{
-		kill(getpid(), SIGINT);
+		//kill(getpid(), SIGINT);
 	}
 	#endif
 #endif
