@@ -279,7 +279,7 @@ void SocketAddress::init(const std::string& hostAddress, Poco::UInt16 portNumber
 	}
 	else
 	{
-		HostEntry he = DNS::hostByName(hostAddress);
+		HostEntry he = DNS::hostByName(hostAddress, 0);
 		HostEntry::AddressList addresses = he.addresses();
 		if (addresses.size() > 0)
 		{
@@ -304,7 +304,7 @@ void SocketAddress::init(Family fam, const std::string& hostAddress, Poco::UInt1
 	}
 	else
 	{
-		HostEntry he = DNS::hostByName(hostAddress);
+		HostEntry he = DNS::hostByName(hostAddress, 0);
 		HostEntry::AddressList addresses = he.addresses();
 		if (addresses.size() > 0)
 		{
