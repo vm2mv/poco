@@ -173,7 +173,13 @@ void TCPServerDispatcher::stop()
 	FastMutex::ScopedLock lock(_mutex);
 	_stopped = true;
 	_queue.clear();
-	_queue.enqueueNotification(new StopNotification);
+
+	//_queue.enqueueNotification(new StopNotification);
+	// https://github.com/pocoproject/poco/issues/3796
+	for (int i = 0; i < _threadPool.allocated(); i++)
+	{
+		_queue.enqueueNotification(new StopNotification);
+	}
 }
 
 
