@@ -137,7 +137,9 @@ POCO_NET_FORCE_SYMBOL(pocoNetworkInitializer)
 #endif
 
 
-#if (POCO_OS == POCO_OS_LINUX) || (POCO_OS == POCO_OS_WINDOWS_NT) || (POCO_OS == POCO_OS_ANDROID)
+// disable POCO_HAVE_FD_EPOLL on Windows, see https://github.com/pocoproject/poco/issues/3796
+// #if (POCO_OS == POCO_OS_LINUX) || (POCO_OS == POCO_OS_WINDOWS_NT) || (POCO_OS == POCO_OS_ANDROID)
+#if (POCO_OS == POCO_OS_LINUX) || (POCO_OS == POCO_OS_ANDROID)
 	#define POCO_HAVE_FD_EPOLL 1
 #endif
 
