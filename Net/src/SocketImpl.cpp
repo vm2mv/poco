@@ -34,6 +34,8 @@
 	#ifndef _WIN32
 		#include <poll.h>
 	#endif
+#elif defined(POCO_OS_FAMILY_WINDOWS)
+	#include <mswsock.h>
 #endif
 
 
