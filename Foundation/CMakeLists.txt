@@ -30,13 +30,6 @@ if(POCO_UNBUNDLED)
 	find_package(PCRE2 REQUIRED)
 	find_package(ZLIB REQUIRED)
 	find_package(Utf8Proc REQUIRED)
-
-	#HACK: Unicode.cpp requires functions from these files. The can't be taken from the library
-	POCO_SOURCES(SRCS RegExp
-		src/pcre2_ucd.c
-		src/pcre2_tables.c
-	)
-
 else()
 	# pcre2
 	POCO_SOURCES(SRCS pcre2
